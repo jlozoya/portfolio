@@ -1,96 +1,190 @@
+"use client";
+
+import React from "react";
+
+import { ReactNode } from "react";
+import ProjectsSection from "./ProjectsSection";
+
+type ContactItemProps = {
+  title?: ReactNode;
+  children: ReactNode;
+};
+
+const ContactItem = ({ children }: ContactItemProps) => (
+  <li className="text-sm text-gray-300 dark:text-gray-200">{children}</li>
+);
+
+const SkillCard = ({ title, children }: ContactItemProps) => (
+  <div className="bg-gray-800/60 dark:bg-gray-700/60 border border-gray-700/40 rounded-xl p-4 shadow-sm">
+    <h4 className="text-lg font-semibold text-gray-100 mb-1">{title}</h4>
+    <p className="text-sm text-gray-300 leading-relaxed">{children}</p>
+  </div>
+);
+
+const sampleProjects = [
+  {
+    id: 1,
+    title: "AI Test Platform UI",
+    description: "Frontend for an AI-driven test automation platform, focusing on performance and large datasets.",
+    image: "/assets/img/projects/functionize-landing.png",
+    tags: ["React", "Next.js", "Node.js", "Tailwind", "Performance"],
+    url: "https://www.functionize.com/",
+  },
+  {
+    id: 2,
+    title: "Architect — Interaction Recorder",
+    description: "Chrome extension that records user interactions (clicks, typing, drags, navigation, downloads, uploads, custom js injections, etc...) into a structured list for automation.",
+    tags: ["Chrome Extension", "JavaScript", "Redux", "Automation", "Tailwind"],
+    image: "/assets/img/projects/architect-simple-loop.png",
+    url: "https://chromewebstore.google.com/detail/functionize-architect/iojgmnipokofkeihgnlhmmmchpfchonk?hl=en",
+  },
+  {
+    id: 3,
+    title: "Field Sampling App",
+    description: "Cross-platform React Native app to record environmental pollutant samples and sync to server.",
+    tags: ["React Native", "SQLite", "RESTful API", "Mobile"],
+  },
+];
+
 const Portfolio = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-sans p-8">
-      {/* Header */}
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-bold">Juan Fernando Lozoya Valdez</h1>
-        <p className="text-xl mt-2">FULL STACK DEVELOPER</p>
-      </header>
-
-      {/* Contact & Languages */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">LANGUAGES</h2>
-          <ul className="space-y-1">
-            <li>English (C1)</li>
-            <li>Spanish (Native)</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">SKILLS</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-gray-100 font-sans">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Header */}
+        <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
           <div>
-            <h3 className="font-bold">Frontend</h3>
-            <p>React, React Native, JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap</p>
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+              Juan Fernando Lozoya Valdez
+            </h1>
+            <p className="mt-1 text-indigo-300/90 font-medium">Full Stack Developer</p>
+            <p className="mt-3 text-sm text-gray-300 max-w-xl">
+              Computer Systems Engineer with 7+ years building scalable web solutions (React
+              & Node.js). Passionate about automation, performant UIs and developer-friendly tools.
+            </p>
           </div>
-          <div>
-            <h3 className="font-bold">Backend</h3>
-            <p>Node.js, Python (Flask, Django), MySQL, RESTful APIs</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Tools & Other</h3>
-            <p>Git, Docker, Webpack, Jira, CI/CD pipelines, Redux, Context API, Figma</p>
-            <p>Agile development, Scrum, Kanban, Cross-functional collaboration</p>
-          </div>
-        </div>
-      </section>
 
-      {/* Profile */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">PROFILE</h2>
-        <p>
-          Computer Systems Engineer with 7+ years of experience delivering scalable web solutions for Silicon Valley companies.
-          Specialized in fullstack JavaScript (React, Node.js), with a proven record of improving product performance, usability, and reliability.
-          Experienced in leading distributed teams and driving innovation in test automation and user interaction technologies.
-        </p>
-      </section>
+          <div className="flex items-center gap-3">
+            <a
+              href="/FernandoLozoya.pdf"
+              download
+              className="inline-block px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold transition"
+            >
+              Download CV
+            </a>
+          </div>
+        </header>
 
-      {/* Experience */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">EXPERIENCE</h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-bold">Functionize | SEP 2019 - JUL 2025</h3>
-            <p>Full Stack Developer</p>
-            <ul className="list-disc ml-5 mt-2 space-y-1">
-              <li>Developed and maintained core features of the AI-driven testing platform using React.</li>
-              <li>Collaborated with globally distributed teams to enhance UI/UX and frontend responsiveness.</li>
-              <li>Maintained and enhanced the backend architecture, primarily with Node.js.</li>
-              <li>Built Architect, a Chrome extension that automatically records user interactions for test automation.</li>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-4">
+          {/* Sidebar */}
+          <aside className="lg:col-span-4 xl:col-span-3 bg-gray-900/40 border border-gray-800 rounded-2xl p-6 shadow-lg">
+            <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
+              Contact
+            </h2>
+
+            <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">
+              Languages
+            </h2>
+            <ul className="space-y-1 mb-6">
+              <ContactItem>English (C1)</ContactItem>
+              <ContactItem>Spanish (Native)</ContactItem>
             </ul>
-          </div>
 
-          <div>
-            <h3 className="font-bold">Ventus Technology | DEC 2018 - SEP 2019</h3>
-            <p>Tech Lead</p>
-            <ul className="list-disc ml-5 mt-2 space-y-1">
-              <li>Led a team of 4 developers delivering custom web applications using React Native.</li>
-              <li>Served as the primary contact for technical decision-making and solution design.</li>
-            </ul>
-          </div>
+            <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">
+              Quick Skills
+            </h2>
+            <div className="space-y-2 text-sm text-gray-300">
+              <div className="flex flex-col gap-2">
+                <span className="font-medium text-gray-100">Frontend</span>
+                <span>React · React Native · TypeScript · Tailwind</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-medium text-gray-100">Backend</span>
+                <span>Node.js · Python · RESTful APIs · MySQL</span>
+              </div>
+            </div>
+          </aside>
 
-          <div>
-            <h3 className="font-bold">CIMAV | JUN 2017 - DEC 2017</h3>
-            <p>Resident Engineer</p>
-            <ul className="list-disc ml-5 mt-2 space-y-1">
-              <li>Developed a cross-platform application for field sampling of environmental pollutants using React Native.</li>
-            </ul>
-          </div>
+          {/* Main content */}
+          <main className="lg:col-span-8 xl:col-span-9">
+            {/* Skills cards */}
+            <section className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Skills</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <SkillCard title="Frontend">
+                  React, React Native, JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap
+                </SkillCard>
+                <SkillCard title="Backend">
+                  Node.js, Python (Flask, Django), MySQL, RESTful APIs, microservices
+                </SkillCard>
+                <SkillCard title="Tools & Processes">
+                  Git, Docker, Webpack, Jira, CI/CD, Redux, Context API, Figma, Agile (Scrum/Kanban)
+                </SkillCard>
+              </div>
+            </section>
+
+            {/* Profile */}
+            <section className="mb-8 bg-gray-800/30 border border-gray-700 rounded-xl p-5">
+              <h3 className="text-xl font-semibold mb-3">Profile</h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Computer Systems Engineer with 7+ years of experience delivering scalable web
+                solutions for Silicon Valley companies. Specialized in fullstack JavaScript (React,
+                Node.js) with a proven record of improving product performance, usability and
+                reliability. Experienced leading distributed teams and driving innovation in test
+                automation and user interaction technologies.
+              </p>
+            </section>
+
+            {/* Experience */}
+            <section className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Experience</h3>
+
+              <article className="mb-5 bg-gray-800/30 border border-gray-700 rounded-lg p-4">
+                <header className="flex items-start justify-between">
+                  <div>
+                    <h4 className="font-bold">Functionize</h4>
+                    <div className="text-sm text-gray-300">Full Stack Developer · SEP 2019 - JUL 2025</div>
+                  </div>
+                </header>
+                <ul className="list-disc ml-5 mt-3 text-sm text-gray-300 space-y-1">
+                  <li>Built and maintained core features of an AI-driven testing platform using React.</li>
+                  <li>Improved frontend performance and responsive behavior across devices.</li>
+                  <li>Maintained backend services primarily in Node.js and built test automation tooling.</li>
+                  <li>Built Architect — a Chrome extension to record user interactions for automation.</li>
+                </ul>
+              </article>
+
+              <article className="mb-5 bg-gray-800/30 border border-gray-700 rounded-lg p-4">
+                <h4 className="font-bold">Ventus Technology</h4>
+                <div className="text-sm text-gray-300">Tech Lead · DEC 2018 - SEP 2019</div>
+                <ul className="list-disc ml-5 mt-3 text-sm text-gray-300 space-y-1">
+                  <li>Led a team of 4 developers building cross-platform apps with React Native.</li>
+                  <li>Responsible for technical decisions and solution design.</li>
+                </ul>
+              </article>
+
+              <article className="mb-5 bg-gray-800/30 border border-gray-700 rounded-lg p-4">
+                <h4 className="font-bold">CIMAV</h4>
+                <div className="text-sm text-gray-300">Resident Engineer · JUN 2017 - DEC 2017</div>
+                <ul className="list-disc ml-5 mt-3 text-sm text-gray-300 space-y-1">
+                  <li>Developed a cross-platform app for field sampling of environmental pollutants (React Native).</li>
+                </ul>
+              </article>
+            </section>
+
+            {/* Education */}
+            <section className="mb-4">
+              <h3 className="text-xl font-semibold mb-3">Education</h3>
+              <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-4 text-sm text-gray-300">
+                <div>2013 - 2017 · Computer Systems Engineering (mobile specialization)</div>
+                <div>ITD | Durango Institute of Technology — B.E. (GPA: 9.5 / 10.0)</div>
+              </div>
+            </section>
+          </main>
+          
         </div>
-      </section>
 
-      {/* Education */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-2">EDUCATION</h2>
-        <p>
-          2013 - 2017 | Computer Systems Engineering with mobile specialization<br/>
-          ITD | Durango Institute of Technology<br/>
-          Bachelor of Engineering (B.E.), GPA: 9.5 / 10.0
-        </p>
-      </section>
+        <ProjectsSection projects={sampleProjects} />
+      </div>
     </div>
   );
 };

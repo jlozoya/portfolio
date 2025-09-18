@@ -1,0 +1,39 @@
+name: Deploy Portfolio to Lightsail
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Next.js
+      run: npm run build
+
+    - name: Deploy to Lightsail
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ${{ secrets.LIGHTSAIL_IP }}
+        username: bitnami
+        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        port: 22
+        script: |
+          cd /opt/bitnami/portfolio
+          git pull origin master
+          npm install
+          npm run build
+          pm2 restart portfolio
