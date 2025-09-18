@@ -29,7 +29,7 @@ export default function RootLayout({
         
         <meta name="google-site-verification" content="ihDso097s_g3PxYsbJ4uofVuFomY7J2o2HxJ1vyC2AU" />
         <meta name="keywords" content="tecnología, eventos, programacion, programación, full stack" />
-        <meta name="description" content="En esta página puedes encontrar y consultar por servicios especializados de ingeniería en sistemas computacionales, informática y tic’s." />
+        <meta name="description" content="On this page, you can find and explore specialized services in computer systems engineering, IT, and technology solutions." />
 
         <link rel="canonical" href="https://lozoya.org/" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -44,7 +44,7 @@ export default function RootLayout({
         <meta name="twitter:site" content="@JuanLozoyaV" />
         <meta name="twitter:creator" content="@JuanLozoyaV" />
         <meta name="twitter:title" content="Juan Fernando Lozoya Valdez" />
-        <meta name="twitter:description" content="Desarrollador full stack, con buen manejo de Angular, Ionic, Nodejs y Lumen. jlozoya1995@gmail.com" />
+        <meta name="twitter:description" content="Full Stack Developer with strong expertise in frontend frameworks" />
         <meta name="twitter:image" content="https://lozoya.org/assets/img/juan-lozoya-banner-1200x630.png" />
         <meta name="twitter:image:width" content="1200" />
         <meta name="twitter:image:height" content="630" />
@@ -55,7 +55,7 @@ export default function RootLayout({
         <meta property="og:site_name" content="lozoya.org" />
         <meta property="og:type" content="business" />
         <meta property="og:url" content="https://lozoya.org" />
-        <meta property="og:description" content="Desarrollador full stack, con buen manejo de Angular, Ionic, Nodejs y Lumen. jlozoya1995@gmail.com" />
+        <meta property="og:description" content="Full Stack Developer with strong expertise in frontend frameworks" />
         <meta property="og:image:url" content="https://lozoya.org/assets/img/juan-lozoya-banner-1200x630.png" />
         <meta property="og:image:secure_url" content="https://lozoya.org/assets/img/juan-lozoya-banner-1200x630.png" />
         <meta property="og:image:width" content="1200" />
@@ -64,8 +64,6 @@ export default function RootLayout({
         <meta property="business:contact_data:locality" content="Durango" />
         <meta property="business:contact_data:postal_code" content="34000" />
         <meta property="business:contact_data:country_name" content="México" />
-        <meta property="place:location:latitude" content="24.0308556" />
-        <meta property="place:location:longitude" content="-104.6704692" />
 
         <meta name="theme-color" content="#343a40" />
         <meta httpEquiv="Cache-control" content="public" max-age="2592000" />
