@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/img/favicon.png" sizes="any" />
+        <link rel="icon" href="/assets/img/favicon.ico" sizes="any" />
         
         <meta name="google-site-verification" content="ihDso097s_g3PxYsbJ4uofVuFomY7J2o2HxJ1vyC2AU" />
         <meta name="keywords" content="tecnología, eventos, programacion, programación, full stack" />
