@@ -25,9 +25,21 @@ const project: Project =  {
 
 export default function Architect() {
   const videos = [
-    { id: 1, title: "Main Page", src: "/assets/videos/projects/main-page.webm" },
-    { id: 2, title: "Quick Add", src: "/assets/videos/projects/quick-add.webm" },
-    { id: 3, title: "Extension Display", src: "/assets/videos/projects/extension-display.webm" },
+    {
+      title: "Main Page",
+      src: "/assets/videos/projects/main-page.webm",
+      description: "In this video, you navigate through the application, and I added a significant portion of the elements shown.",
+    },
+    {
+      title: "Quick Add",
+      src: "/assets/videos/projects/quick-add.webm",
+      description: "Quick Add is a feature that leverages machine learning-generated files containing information about page elements, enabling you to add new steps to your automated test simply by clicking on a screenshot.",
+    },
+    {
+      title: "Extension Display",
+      src: "/assets/videos/projects/extension-display.webm",
+      description: "Extensions is a feature I added, powered by Google Cloud Run, allowing technical users to build and integrate functionality in the programming language of their choice.",
+    },
   ];
   
   return (

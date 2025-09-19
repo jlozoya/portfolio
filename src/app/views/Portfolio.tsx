@@ -30,7 +30,7 @@ const sampleProjects = [
     company: "Functionize",
     description: "Frontend for an AI-driven test automation platform, focusing on performance and large datasets.",
     image: "/assets/img/projects/functionize-landing.png",
-    tags: ["React", "Next.js", "Node.js", "Tailwind", "Performance"],
+    tags: ["React", "Next.js", "Node.js", "Tailwind", "Python", "PHP", "Docker", "Performance"],
     details: "/functionize",
     url: "https://www.functionize.com/",
   },
@@ -90,7 +90,7 @@ const Portfolio = () => {
             </h1>
             <p className="mt-1 text-indigo-300/90 font-medium">Full Stack Developer</p>
             <p className="mt-3 text-sm text-gray-300 max-w-xl">
-              Computer Systems Engineer experienced in building scalable web solutions (React & Node.js). Passionate about automation, performant UIs, and developer-friendly tools.
+              Computer Systems Engineer experienced in building scalable web solutions (React & Node.js). Passionate about automation, performant UIs, and user-friendly tools.
             </p>
           </div>
 
@@ -178,7 +178,7 @@ const Portfolio = () => {
                   <li>Built and maintained core features of an AI-driven testing platform using React.</li>
                   <li>Improved frontend performance and responsive behavior across devices.</li>
                   <li>Maintained backend services primarily in Node.js and built test automation tooling.</li>
-                  <li>Built Architect — a Chrome extension to record user interactions for automation.</li>
+                  <li>Built Architect a Chrome extension to record user interactions for automation.</li>
                 </ul>
               </article>
 

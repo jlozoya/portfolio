@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "I.C.S Juan Fernando Lozoya Valdez",
+  title: "C.S.E. Juan Fernando Lozoya Valdez",
   description: "Fernando Lozoya's Portfolio",
 };
 

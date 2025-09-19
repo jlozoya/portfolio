@@ -25,7 +25,11 @@ const project: Project = {
 
 export default function Architect() {
   const videos = [
-    { id: 1, title: "Simple Loop", src: "/assets/videos/projects/architect-simple-loop.webm" },
+    {
+      title: "Simple Loop",
+      src: "/assets/videos/projects/architect-simple-loop.webm",
+      description: "Recording a simple example, performing a Google search and adding a loop.",
+    },
   ];
   
   return (

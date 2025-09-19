@@ -6,9 +6,10 @@ export async function POST(req: Request) {
     const data = await req.json();
 
     // validate...
-    if (!data?.name || !data?.email || !data?.message)
+    if (!data?.name || !data?.email || !data?.message) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
-
+    }
+    
     const GMAIL_USER = process.env.GMAIL_USER;
     const GMAIL_PASS = process.env.GMAIL_PASS;
     const EMAIL_TO = process.env.EMAIL_TO;
