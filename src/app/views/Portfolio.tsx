@@ -16,27 +16,18 @@ const ContactItem = ({ children }: ContactItemProps) => (
   <li className="text-sm text-gray-300 dark:text-gray-200">{children}</li>
 );
 
-const SkillCard = ({ title, children }: ContactItemProps) => (
-  <div className="bg-gray-800/60 dark:bg-gray-700/60 border border-gray-700/40 rounded-xl p-4 shadow-sm">
-    <h4 className="text-lg font-semibold text-gray-100 mb-1">{title}</h4>
-    <p className="text-sm text-gray-300 leading-relaxed">{children}</p>
-  </div>
-);
-
 const sampleProjects = [
   {
-    id: 1,
     title: "AI Test Platform UI",
     company: "Functionize",
     description: "Frontend for an AI-driven test automation platform, focusing on performance and large datasets.",
     image: "/assets/img/projects/functionize-landing.png",
-    tags: ["React", "Next.js", "Node.js", "Tailwind", "Python", "PHP", "Docker", "Performance"],
+    tags: ["React", "Next.js", "Redux", "Node.js", "Tailwind", "Python", "PHP", "Docker", "Performance", "AWS", "GCloud"],
     details: "/functionize",
     url: "https://www.functionize.com/",
   },
   {
-    id: 2,
-    title: "Architect — Interaction Recorder",
+    title: "Architect",
     company: "Functionize",
     description: "Chrome extension that records user interactions (clicks, typing, drags, navigation, downloads, uploads, custom js injections, etc...) into a structured list for automation.",
     tags: ["Chrome Extension", "JavaScript", "Redux", "Automation", "Tailwind"],
@@ -45,20 +36,34 @@ const sampleProjects = [
     url: "https://chromewebstore.google.com/detail/functionize-architect/iojgmnipokofkeihgnlhmmmchpfchonk?hl=en",
   },
   {
-    id: 3,
     title: "Rave",
-    company: "Personal",
+    company: "Personal Project",
     description: "This application is an evolving social network featuring integrated payment gateways, infinite scrolling, role-based user access, user analytics, and a dedicated blog page.",
     tags: ["Ionic", "MySQL", "RESTful API", "Hibrid", "Laravel", "OAuth2", "Online Payments"],
     image: "/assets/img/projects/rave-landing.png",
     url: "https://github.com/jlozoya/rave",
   },
   {
-    id: 4,
+    title: "Chat",
+    company: "Personal Project",
+    description: "This project is a CI/CD pipeline automation exercise for a React-based chat application and an Nginx reverse proxy. Both the client and server applications are automatically deployed and updated through the pipeline.",
+    tags: ["React", "Socket.io", "Node.js", "Docker", "CI/CD"],
+    image: "/assets/img/projects/chat.png",
+    url: "https://github.com/jlozoya/chat",
+  },
+  {
+    title: "This Portfolio",
+    company: "Personal Project",
+    description: "It is built with React, Next.js, and TypeScript, with a CI/CD pipeline for integration into AWS.",
+    tags: ["React", "Next.js", "TypeScript", "CI/CD", "AWS"],
+    image: "/assets/img/projects/portfolio.png",
+    url: "https://github.com/jlozoya/portfolio",
+  },
+  {
     title: "Field Sampling App",
     company: "CIMAV",
     description: "Cross-platform React Native app to record environmental pollutant samples and sync to server.",
-    tags: ["React Native", "SQLite", "RESTful API", "Mobile"],
+    tags: ["React Native", "TypeScript", "SQLite", "RESTful API", "Mobile"],
     image: "/assets/img/projects/field-sampling-app.png",
   },
 ];
@@ -119,38 +124,26 @@ const Portfolio = () => {
             </ul>
 
             <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">
-              Quick Skills
+              Skills
             </h2>
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex flex-col gap-2">
                 <span className="font-medium text-gray-100">Frontend</span>
-                <span>React · React Native · TypeScript · Tailwind</span>
+                <span>React, React Native, JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap</span>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-medium text-gray-100">Backend</span>
-                <span>Node.js · Python · RESTful APIs · MySQL</span>
+                <span>Node.js, Python (Flask, Django), MySQL, RESTful APIs, microservices</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-medium text-gray-100">Tools & Processes</span>
+                <span>Git, Docker, Webpack, Jira, CI/CD, Redux, Context API, Figma, Agile (Scrum/Kanban)</span>
               </div>
             </div>
           </aside>
 
           {/* Main content */}
           <main className="lg:col-span-8 xl:col-span-9">
-            {/* Skills cards */}
-            <section className="mb-8">
-              <h3 className="text-xl font-semibold mb-4">Skills</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <SkillCard title="Frontend">
-                  React, React Native, JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap
-                </SkillCard>
-                <SkillCard title="Backend">
-                  Node.js, Python (Flask, Django), MySQL, RESTful APIs, microservices
-                </SkillCard>
-                <SkillCard title="Tools & Processes">
-                  Git, Docker, Webpack, Jira, CI/CD, Redux, Context API, Figma, Agile (Scrum/Kanban)
-                </SkillCard>
-              </div>
-            </section>
-
             {/* Profile */}
             <section className="mb-8 bg-gray-800/30 border border-gray-700 rounded-xl p-5">
               <h3 className="text-xl font-semibold mb-3">Profile</h3>

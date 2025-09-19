@@ -8,7 +8,6 @@ import Link from "next/link";
  */
 
 type Project = {
-  id: string | number;
   title: string;
   company?: string;
   description: string;
@@ -28,9 +27,9 @@ export default function ProjectsSection({ projects = [] }: ProjectsSectionProps)
       <h3 className="text-xl font-semibold mb-4">Projects</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <article
-            key={project.id || project.title}
+            key={index || project.title}
             className="group bg-gray-800/40 border border-gray-700 rounded-2xl p-5 hover:scale-[1.01] transform-gpu transition-shadow duration-200 shadow-sm"
           >
             {/* Image / placeholder */}
