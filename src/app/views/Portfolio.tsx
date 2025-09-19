@@ -4,6 +4,8 @@ import React from "react";
 
 import { ReactNode } from "react";
 import ProjectsSection from "./ProjectsSection";
+import OvalCarousel from "./OvalCarousel";
+import ContactForm from "./ContactForm";
 
 type ContactItemProps = {
   title?: ReactNode;
@@ -61,10 +63,25 @@ const sampleProjects = [
   },
 ];
 
+const logos = [
+  { name: 'React', src: '/assets/img/brands/react.png',},
+  { name: 'Angular', src: '/assets/img/brands/angular.png',},
+  { name: 'Vue.js', src: '/assets/img/brands/vue.png',},
+  { name: 'Node.js', src: '/assets/img/brands/nodejs.png',},
+  { name: 'TypeScript', src: '/assets/img/brands/typescript.png',},
+  { name: 'JavaScript', src: '/assets/img/brands/javascript.png',},
+  { name: 'Python', src: '/assets/img/brands/python.png',},
+  { name: 'HTML5', src: '/assets/img/brands/html5.png',},
+  { name: 'CSS3', src: '/assets/img/brands/css3.png',},
+  { name: 'MySQL', src: '/assets/img/brands/mysql.png',},
+  { name: 'Docker', src: '/assets/img/brands/docker.png',},
+  { name: 'Git', src: '/assets/img/brands/git.png',},
+];
+
 const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-gray-100 font-sans">
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">        
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
           <div>
@@ -73,8 +90,7 @@ const Portfolio = () => {
             </h1>
             <p className="mt-1 text-indigo-300/90 font-medium">Full Stack Developer</p>
             <p className="mt-3 text-sm text-gray-300 max-w-xl">
-              Computer Systems Engineer with 7+ years building scalable web solutions (React
-              & Node.js). Passionate about automation, performant UIs and developer-friendly tools.
+              Computer Systems Engineer experienced in building scalable web solutions (React & Node.js). Passionate about automation, performant UIs, and developer-friendly tools.
             </p>
           </div>
 
@@ -89,13 +105,11 @@ const Portfolio = () => {
           </div>
         </header>
 
+        <OvalCarousel logos={logos} />
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-4">
           {/* Sidebar */}
           <aside className="lg:col-span-4 xl:col-span-3 bg-gray-900/40 border border-gray-800 rounded-2xl p-6 shadow-lg">
-            <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
-              Contact
-            </h2>
-
             <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">
               Languages
             </h2>
@@ -199,6 +213,8 @@ const Portfolio = () => {
         </div>
 
         <ProjectsSection projects={sampleProjects} />
+
+        <ContactForm />
       </div>
     </div>
   );
