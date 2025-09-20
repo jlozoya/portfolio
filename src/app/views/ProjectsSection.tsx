@@ -24,7 +24,7 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ id, projects = [] }: ProjectsSectionProps) {
   return (
-    <section className="mb-8" id={id}>
+    <section className="pt-12" id={id}>
       <h3 className="text-xl font-semibold mb-4">Projects</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

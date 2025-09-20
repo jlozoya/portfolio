@@ -44,15 +44,15 @@ export default function ContactForm({ id }: ContactFormProps) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-gray-900 rounded-2xl shadow-lg" id={id}>
-      <h2 className="text-2xl font-bold text-center text-white mb-6">
+    <div className="w-full mx-auto p-6 bg-gray-900 rounded-2xl shadow-lg mt-12" id={id}>
+      <h2 className="text-2xl font-bold text-center text-white mb-6 select-none">
         Contact me
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300 select-none">
             Name
           </label>
           <input
@@ -68,7 +68,7 @@ export default function ContactForm({ id }: ContactFormProps) {
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300 select-none">
             Email
           </label>
           <input
@@ -84,7 +84,7 @@ export default function ContactForm({ id }: ContactFormProps) {
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 select-none">
             Message
           </label>
           <textarea
