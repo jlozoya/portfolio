@@ -86,7 +86,7 @@ export default function OvalCarousel({
     height: `${size}px`,
   };
   return (
-    <div className="flex justify-center items-center py-12">
+    <div className="flex justify-center items-center py-12 select-none">
       <div
         style={wrapperStyle}
         className="relative rounded-full"
@@ -94,7 +94,7 @@ export default function OvalCarousel({
       >
         {/* optional decorative ring */}
         <div
-          className="absolute inset-0 rounded-full border border-gray-700/40"
+          className="absolute inset-0 rounded-full "
           style={{ boxShadow: "inset 0 0 40px rgba(255,255,255,0.02)" }}
         />
 

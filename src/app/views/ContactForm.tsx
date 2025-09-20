@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  id?: string;
+}
+
+export default function ContactForm({ id }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,7 +44,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-gray-900 rounded-2xl shadow-lg">
+    <div className="w-full mx-auto p-6 bg-gray-900 rounded-2xl shadow-lg" id={id}>
       <h2 className="text-2xl font-bold text-center text-white mb-6">
         Contact me
       </h2>

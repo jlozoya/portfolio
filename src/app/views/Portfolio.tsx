@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { ReactNode } from "react";
 import ProjectsSection from "./ProjectsSection";
 import OvalCarousel from "./OvalCarousel";
 import ContactForm from "./ContactForm";
+import Image from "next/image";
 
 type ContactItemProps = {
   title?: ReactNode;
@@ -86,7 +87,20 @@ const logos = [
 const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-gray-100 font-sans">
-      <div className="max-w-6xl mx-auto px-6 py-12">        
+      {/* Top Nav */}
+      <nav className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+          <span className="font-bold text-indigo-400"></span>
+          <ul className="flex gap-6 text-sm font-medium text-gray-300">
+            <li><a href="#profile" className="hover:text-indigo-400">Profile</a></li>
+            <li><a href="#experience" className="hover:text-indigo-400">Experience</a></li>
+            <li><a href="#projects" className="hover:text-indigo-400">Projects</a></li>
+            <li><a href="#contact" className="hover:text-indigo-400">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <div className="max-w-6xl mx-auto px-6 py-12" id="profile">        
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
           <div>
@@ -110,9 +124,19 @@ const Portfolio = () => {
           </div>
         </header>
 
-        <OvalCarousel logos={logos} />
+        <section
+          className="relative h-[70vh] min-h-[480px] w-full overflow-hidden
+            bg-fixed bg-cover bg-center rounded-2xl mb-6"
+          style={{
+            backgroundImage: "url(/assets/img/van-gogh-landing.png)",
+            opacity: 0.8,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/10" />
+          <OvalCarousel logos={logos} />
+        </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-4" id="experience">
           {/* Sidebar */}
           <aside className="lg:col-span-4 xl:col-span-3 bg-gray-900/40 border border-gray-800 rounded-2xl p-6 shadow-lg">
             <h2 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">
@@ -205,9 +229,9 @@ const Portfolio = () => {
           
         </div>
 
-        <ProjectsSection projects={sampleProjects} />
+        <ProjectsSection id="projects" projects={sampleProjects} />
 
-        <ContactForm />
+        <ContactForm id="contact" />
       </div>
     </div>
   );
