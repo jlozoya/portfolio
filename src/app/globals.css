@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +10,12 @@
 }
 
 @keyframes rotate-oval {
-  0%   { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 .animate-rotate-oval {
@@ -47,5 +51,7 @@ html {
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }

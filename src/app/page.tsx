@@ -1,4 +1,4 @@
-import Portfolio from "./views/Portfolio";
+import Portfolio from './views/Portfolio';
 
 export default function Home() {
   return (

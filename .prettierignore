@@ -1,0 +1,19 @@
+# dependencies
+node_modules
+
+# builds / outputs
+.next
+out
+dist
+build
+coverage
+.turbo
+.vercel
+
+# misc
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# generated assets
+public/**/*.min.*

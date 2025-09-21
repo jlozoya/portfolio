@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model VisitorFingerprint {
+  id          Int      @id @default(autoincrement())
+  hash        String   @unique
+  serverToken String   @unique
+  visits      Int      @default(1)
+  firstSeen   DateTime @default(now())
+  lastSeen    DateTime @updatedAt
+  userAgent   String?
+  ip          String?
+  meta        Json?
+
+  progress VisitorAchievement[] @relation("VisitorToAchievement")
+  events   EventLog[]           @relation("VisitorToEventLog")
+
+  stats VisitorStats?
+
+  @@index([hash])
+  @@index([serverToken])
+}
+
+model VisitorAchievement {
+  id             Int       @id @default(autoincrement())
+  visitorId      Int
+  achievementId  Int
+  unlockedAt     DateTime?
+  progressNumber Int       @default(0)
+  lastProgressAt DateTime?
+
+  visitor     VisitorFingerprint @relation("VisitorToAchievement", fields: [visitorId], references: [id])
+  achievement Achievement        @relation("AchievementToVisitor", fields: [achievementId], references: [id])
+
+  @@unique([visitorId, achievementId])
+}
+
+model EventLog {
+  id        Int       @id @default(autoincrement())
+  visitorId Int
+  type      EventType
+  valueNum  Float?
+  meta      Json?
+  createdAt DateTime  @default(now())
+
+  visitor VisitorFingerprint @relation("VisitorToEventLog", fields: [visitorId], references: [id])
+
+  @@index([visitorId, type, createdAt])
+}
+
+model VisitorStats {
+  visitorId      Int   @id
+  visits         Int   @default(0)
+  pagesSeen      Int   @default(0)
+  totalTimeSec   Int   @default(0)
+  maxScrollDepth Float @default(0)
+  contactSubmits Int   @default(0)
+  shares         Int   @default(0)
+
+  visitor VisitorFingerprint @relation(fields: [visitorId], references: [id])
+}
+
+enum EventType {
+  VISIT
+  PAGE_VIEW
+  TIME_SPENT_SEC
+  SCROLL_DEPTH
+  CONTACT_SUBMIT
+  SHARE
+}
+
+model Achievement {
+  id          Int     @id @default(autoincrement())
+  slug        String  @unique
+  title       String
+  description String
+  icon        String?
+  goalNumber  Int?
+
+  progress VisitorAchievement[] @relation("AchievementToVisitor")
+}

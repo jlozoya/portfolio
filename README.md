@@ -42,4 +42,5 @@ GMAIL_USER=you@gmail.com
 GMAIL_PASS=xxxxxxxxxxxxxxx   # App password (not your account password)
 EMAIL_TO=recipient@example.com
 EMAIL_FROM="Website <you@gmail.com>"
+DATABASE_URL="mysql://USER:PASSWORD@HOST:3306/DBNAME"
 ```
