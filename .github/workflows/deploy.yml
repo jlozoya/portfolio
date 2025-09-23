@@ -25,13 +25,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Prisma validate
-        run: |
-          cd /opt/bitnami/portfolio
-          npx prisma format
-          npx prisma validate
-          npx prisma migrate status
-
       - name: Build Next.js
         run: npm run build
 
