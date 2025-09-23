@@ -167,7 +167,7 @@ const Portfolio = () => {
         <section
           className="relative mb-6 h-[70vh] min-h-[480px] w-full overflow-hidden rounded-2xl bg-cover bg-fixed bg-top"
           style={{
-            backgroundImage: 'url(/assets/img/van-gogh-landing.png)',
+            backgroundImage: 'url(/assets/img/van-gogh-landing.webp)',
             opacity: 0.8,
           }}
         >
