@@ -157,7 +157,7 @@ const Portfolio = () => {
             <a
               href="/FernandoLozoya.pdf"
               download
-              className="inline-block rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
+              className="inline-block rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition select-none hover:bg-indigo-500"
             >
               Download CV
             </a>
