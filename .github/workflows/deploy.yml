@@ -27,6 +27,7 @@ jobs:
 
       - name: Prisma validate
         run: |
+          cd /opt/bitnami/portfolio
           npx prisma format
           npx prisma validate
           npx prisma migrate status
