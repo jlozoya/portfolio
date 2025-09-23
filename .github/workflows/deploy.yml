@@ -47,7 +47,7 @@ jobs:
             # export DATABASE_URL="${{ secrets.DATABASE_URL }}"
 
             # Install deps (keeps dev deps so Prisma CLI is available)
-            npm ci
+            # npm ci
 
             # Keep Prisma up to date
             npx prisma generate         # refresh .prisma/client
