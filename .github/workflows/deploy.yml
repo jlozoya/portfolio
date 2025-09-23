@@ -2,8 +2,11 @@ name: Deploy Portfolio to Lightsail
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+
+concurrency:
+  group: deploy-portfolio
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -11,20 +14,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Prisma validate
+        run: |
+          npx prisma format
+          npx prisma validate
+          npx prisma migrate status
 
       - name: Build Next.js
         run: npm run build
 
-      - name: Deploy to Lightsail
+      - name: Deploy to Lightsail (pull, install, prisma migrate, build, restart)
         uses: appleboy/ssh-action@v0.1.9
         with:
           host: ${{ secrets.LIGHTSAIL_IP }}
@@ -32,8 +42,28 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           port: 22
           script: |
+            set -e
             cd /opt/bitnami/portfolio
-            git pull origin master
-            npm install
+
+            # Pull latest
+            git fetch --all
+            git reset --hard origin/master
+
+            # Ensure env has DATABASE_URL (either via .env on server or uncomment next line)
+            # export DATABASE_URL="${{ secrets.DATABASE_URL }}"
+
+            # Install deps (keeps dev deps so Prisma CLI is available)
+            npm ci
+
+            # Keep Prisma up to date
+            npx prisma generate         # refresh .prisma/client
+            npx prisma migrate deploy   # apply pending migrations to prod DB
+
+            # Rebuild app (or skip if you copy CI build artifacts)
             npm run build
-            pm2 restart portfolio
+
+            # Optional: slim prod deps after migrate
+            # npm prune --production
+
+            # Reload app
+            pm2 reload portfolio || pm2 restart portfolio
