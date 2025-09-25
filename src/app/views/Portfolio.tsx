@@ -232,7 +232,7 @@ const Portfolio = () => {
                   <div>
                     <h4 className="font-bold">Functionize</h4>
                     <div className="text-sm text-gray-300">
-                      Full Stack Developer · SEP 2019 - JUL 2025
+                      Full Stack Developer · SEP 2019 - SEP 2025
                     </div>
                   </div>
                 </header>
