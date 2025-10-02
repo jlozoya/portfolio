@@ -81,7 +81,7 @@ const sampleProjects = [
     tags: ['React', 'Socket.io', 'Node.js', 'Docker', 'CI/CD'],
     image: '/assets/img/projects/chat.png',
     url: 'https://github.com/jlozoya/chat',
-    details: 'https://chat.lozoya.com',
+    details: 'https://chat.lozoya.org',
   },
   {
     title: 'This Portfolio',
