@@ -63,6 +63,7 @@ const sampleProjects = [
     description:
       'Built a reliable interface for distributing insurance policies, integrating SQL procedures with an API deployed on Azure’s server infrastructure.',
     tags: ['SQL', 'Azure', 'Middlewares', 'APIs', 'Backend'],
+    image: '/assets/img/projects/ventus-tech.png',
   },
   {
     title: 'Field Sampling App',
@@ -80,6 +81,7 @@ const sampleProjects = [
     tags: ['React', 'Socket.io', 'Node.js', 'Docker', 'CI/CD'],
     image: '/assets/img/projects/chat.png',
     url: 'https://github.com/jlozoya/chat',
+    details: 'https://chat.lozoya.com',
   },
   {
     title: 'This Portfolio',

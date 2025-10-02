@@ -41,6 +41,8 @@ export default function ProjectsSection({ id, projects = [] }: ProjectsSectionPr
                   src={project.image}
                   alt={project.title}
                   className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div className="text-sm text-gray-300/80">No preview</div>
