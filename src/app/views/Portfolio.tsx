@@ -55,6 +55,7 @@ const sampleProjects = [
       'This application is an evolving social network featuring integrated payment gateways, infinite scrolling, role-based user access, user analytics, and a dedicated blog page.',
     tags: ['Ionic', 'MySQL', 'RESTful API', 'Hibrid', 'Laravel', 'OAuth2', 'Online Payments'],
     image: '/assets/img/projects/rave-landing.png',
+    details: 'https://rave.lozoya.org/',
     url: 'https://github.com/jlozoya/rave',
   },
   {
