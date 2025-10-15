@@ -11,53 +11,54 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20 # prevent "Run Command Timeout" on slow builds
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Next.js
         run: npm run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }} # optional for build-time Prisma
 
-      - name: Deploy to Lightsail (pull, install, prisma migrate, build, restart)
+      - name: Deploy to Lightsail
         uses: appleboy/ssh-action@v0.1.9
         with:
           host: ${{ secrets.LIGHTSAIL_IP }}
           username: bitnami
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           port: 22
+          script_stop: true
+          timeout: 15m
           script: |
             set -e
             cd /home/bitnami/portfolio
 
-            # Pull latest
+            echo ">>> Pulling latest code..."
             git fetch --all
             git reset --hard origin/master
 
-            # Ensure env has DATABASE_URL (either via .env on server or uncomment next line)
-            # export DATABASE_URL="${{ secrets.DATABASE_URL }}"
+            echo ">>> Installing dependencies..."
+            npm ci --omit=dev
 
-            # Install deps (keeps dev deps so Prisma CLI is available)
-            # npm ci
+            echo ">>> Running Prisma migrate..."
+            export DATABASE_URL="${{ secrets.DATABASE_URL }}"
+            npx prisma generate
+            npx prisma migrate deploy
 
-            # Keep Prisma up to date
-            npx prisma generate         # refresh .prisma/client
-            npx prisma migrate deploy   # apply pending migrations to prod DB
-
-            # Rebuild app (or skip if you copy CI build artifacts)
+            echo ">>> Rebuilding Next.js app..."
             npm run build
 
-            # Optional: slim prod deps after migrate
-            # npm prune --production
-
-            # Reload app
+            echo ">>> Restarting PM2 process..."
             pm2 reload portfolio || pm2 restart portfolio
+            pm2 save

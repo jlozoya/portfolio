@@ -44,3 +44,11 @@ EMAIL_TO=recipient@example.com
 EMAIL_FROM="Website <you@gmail.com>"
 DATABASE_URL="mysql://USER:PASSWORD@HOST:3306/DBNAME"
 ```
+
+## Seeder
+
+```
+npx prisma migrate dev --name init
+npx prisma db seed
+npx tsx scripts/seedAchievements.ts
+```

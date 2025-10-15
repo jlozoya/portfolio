@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -24,10 +18,10 @@ model VisitorFingerprint {
   ip          String?
   meta        Json?
 
+  // Relations
   progress VisitorAchievement[] @relation("VisitorToAchievement")
   events   EventLog[]           @relation("VisitorToEventLog")
-
-  stats VisitorStats?
+  stats    VisitorStats?
 
   @@index([hash])
   @@index([serverToken])
@@ -41,8 +35,9 @@ model VisitorAchievement {
   progressNumber Int       @default(0)
   lastProgressAt DateTime?
 
-  visitor     VisitorFingerprint @relation("VisitorToAchievement", fields: [visitorId], references: [id])
-  achievement Achievement        @relation("AchievementToVisitor", fields: [achievementId], references: [id])
+  // Relations (must mirror the parent side)
+  visitor     VisitorFingerprint @relation("VisitorToAchievement", fields: [visitorId], references: [id], onUpdate: Cascade, onDelete: Cascade, map: "fk_visitorachievement_visitor")
+  achievement Achievement        @relation("AchievementToVisitor", fields: [achievementId], references: [id], onUpdate: Cascade, onDelete: Cascade, map: "fk_visitorachievement_achievement")
 
   @@unique([visitorId, achievementId])
 }
@@ -55,7 +50,7 @@ model EventLog {
   meta      Json?
   createdAt DateTime  @default(now())
 
-  visitor VisitorFingerprint @relation("VisitorToEventLog", fields: [visitorId], references: [id])
+  visitor VisitorFingerprint @relation("VisitorToEventLog", fields: [visitorId], references: [id], onUpdate: Cascade, onDelete: Cascade, map: "fk_eventlog_visitor")
 
   @@index([visitorId, type, createdAt])
 }
@@ -69,7 +64,7 @@ model VisitorStats {
   contactSubmits Int   @default(0)
   shares         Int   @default(0)
 
-  visitor VisitorFingerprint @relation(fields: [visitorId], references: [id])
+  visitor VisitorFingerprint @relation(fields: [visitorId], references: [id], onUpdate: Cascade, onDelete: Cascade, map: "fk_visitorstats_visitor")
 }
 
 enum EventType {
@@ -89,5 +84,6 @@ model Achievement {
   icon        String?
   goalNumber  Int?
 
+  // Relation mirror
   progress VisitorAchievement[] @relation("AchievementToVisitor")
 }

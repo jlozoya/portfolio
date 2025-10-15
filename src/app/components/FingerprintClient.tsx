@@ -1,15 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import AchievementReporter from './AchievementReporter';
-import AchievementToast from './AchievementToast';
-
-/* ---------- Typed custom event for unlock toasts ---------- */
-declare global {
-  interface WindowEventMap {
-    'achievements:unlocked': CustomEvent<string[]>;
-  }
-}
-/* --------------------------------------------------------- */
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -204,7 +195,6 @@ export default function FingerprintClient({ sendToServer = false }: { sendToServ
   return (
     <>
       <AchievementReporter serverToken={serverToken ?? undefined} hash={hash ?? undefined} />
-      <AchievementToast />
     </>
   );
 }

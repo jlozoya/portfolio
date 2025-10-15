@@ -1,6 +1,2 @@
-declare global {
-  interface WindowEventMap {
-    'achievements:unlocked': CustomEvent<string[]>;
-  }
-}
+declare global {}
 export {};

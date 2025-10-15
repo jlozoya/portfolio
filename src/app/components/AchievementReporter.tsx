@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { showToast } from 'nextjs-toast-notify';
 import { useEffect, useRef } from 'react';
 
 type EventType = 'PAGE_VIEW' | 'TIME_SPENT_SEC' | 'SCROLL_DEPTH';
@@ -38,9 +39,14 @@ export default function AchievementReporter({
       });
       const json = await res.json();
       if (Array.isArray(json?.newlyUnlocked) && json.newlyUnlocked.length) {
-        window.dispatchEvent(
-          new CustomEvent('achievements:unlocked', { detail: json.newlyUnlocked }),
-        );
+        showToast.success(json.newlyUnlocked, {
+          duration: 4000,
+          progress: false,
+          position: 'bottom-center',
+          transition: 'bounceIn',
+          icon: '',
+          sound: false,
+        });
       }
     } catch {}
   };
