@@ -164,7 +164,6 @@ export default function FingerprintClient({ sendToServer = false }: { sendToServ
       const serialized = stableStringify(raw);
       const h = await sha256Hex(serialized);
       setFingerprintHash(h);
-      setHash(h);
 
       if (sendToServer) {
         try {
@@ -177,11 +176,14 @@ export default function FingerprintClient({ sendToServer = false }: { sendToServ
           if (res.ok && data?.serverToken) {
             setServerToken(String(data.serverToken));
             setFingerprintToken(String(data.serverToken));
+            setHash(h);
           }
         } catch (e) {
           // non-fatal
           console.error('Failed to store/consult fingerprint:', e);
         }
+      } else {
+        setHash(h);
       }
     }
 
