@@ -3,9 +3,6 @@ import { usePathname } from 'next/navigation';
 import { showToast } from 'nextjs-toast-notify';
 import { useEffect, useRef } from 'react';
 
-type EventType = 'PAGE_VIEW' | 'TIME_SPENT_SEC' | 'SCROLL_DEPTH';
-type AchievementEvent = { type: EventType; valueNum?: number; meta?: Record<string, unknown> };
-
 export default function AchievementReporter({
   serverToken,
   hash,
@@ -18,45 +15,27 @@ export default function AchievementReporter({
   const maxDepth = useRef(0);
   const lastPath = useRef<string | null>(null);
 
-  const canSend = () => Boolean(serverToken || hash);
-
-  const beacon = (events: AchievementEvent[]) => {
+  const canSend = () => Boolean(serverToken && hash);
+  // Route changes + initial PAGE_VIEW when identifier available
+  useEffect(() => {
     if (!canSend()) return;
-    const blob = new Blob([JSON.stringify({ serverToken, hash, events })], {
-      type: 'application/json',
-    });
-    navigator.sendBeacon('/api/events', blob);
-  };
-
-  const send = async (events: AchievementEvent[]) => {
-    if (!canSend()) return;
-    try {
-      const res = await fetch('/api/events', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ serverToken, hash, events }),
-        keepalive: true,
-      });
-      const json = await res.json();
-      if (Array.isArray(json?.newlyUnlocked) && json.newlyUnlocked.length) {
-        showToast.success(json.newlyUnlocked, {
-          duration: 4000,
-          progress: false,
-          position: 'bottom-center',
-          transition: 'bounceIn',
-          icon: '',
-          sound: false,
-        });
-      }
-    } catch {}
-  };
-
-  const flush = () => {
-    const secs = Math.max(0, Math.round((Date.now() - timeStart.current) / 1000));
-    const events: AchievementEvent[] = [{ type: 'TIME_SPENT_SEC', valueNum: secs }];
-    if (maxDepth.current > 0) events.push({ type: 'SCROLL_DEPTH', valueNum: maxDepth.current });
-    beacon(events);
-  };
+    const nowPath = pathname || window.location.pathname;
+    if (lastPath.current === null) {
+      lastPath.current = nowPath;
+      timeStart.current = Date.now();
+      maxDepth.current = 0;
+      void send([{ type: 'PAGE_VIEW', meta: { path: nowPath, ref: document.referrer } }]);
+      return;
+    }
+    if (lastPath.current !== nowPath) {
+      flush();
+      lastPath.current = nowPath;
+      timeStart.current = Date.now();
+      maxDepth.current = 0;
+      void send([{ type: 'PAGE_VIEW', meta: { path: nowPath } }]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, serverToken, hash]);
 
   // Scroll depth tracking (throttled with rAF)
   useEffect(() => {
@@ -91,31 +70,48 @@ export default function AchievementReporter({
       window.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pagehide', onPageHide);
       window.removeEventListener('beforeunload', onBeforeUnload);
-      flush(); // also on unmount
+      flush();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Route changes + initial PAGE_VIEW when identifier available
-  useEffect(() => {
+  const flush = () => {
+    const secs = Math.max(0, Math.round((Date.now() - timeStart.current) / 1000));
+    const events: AchievementEvent[] = [{ type: 'TIME_SPENT_SEC', valueNum: secs }];
+    if (maxDepth.current > 0) events.push({ type: 'SCROLL_DEPTH', valueNum: maxDepth.current });
+    beacon(events);
+  };
+
+  const beacon = (events: AchievementEvent[]) => {
     if (!canSend()) return;
-    const nowPath = pathname || window.location.pathname;
-    if (lastPath.current === null) {
-      lastPath.current = nowPath;
-      timeStart.current = Date.now();
-      maxDepth.current = 0;
-      void send([{ type: 'PAGE_VIEW', meta: { path: nowPath, ref: document.referrer } }]);
-      return;
-    }
-    if (lastPath.current !== nowPath) {
-      flush();
-      lastPath.current = nowPath;
-      timeStart.current = Date.now();
-      maxDepth.current = 0;
-      void send([{ type: 'PAGE_VIEW', meta: { path: nowPath } }]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, serverToken, hash]);
+    const blob = new Blob([JSON.stringify({ serverToken, hash, events })], {
+      type: 'application/json',
+    });
+    navigator.sendBeacon('/api/events', blob);
+  };
+
+  const send = async (events: AchievementEvent[]) => {
+    if (!canSend()) return;
+    try {
+      const res = await fetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ serverToken, hash, events }),
+        keepalive: true,
+      });
+      const json = await res.json();
+      if (Array.isArray(json?.newlyUnlocked) && json.newlyUnlocked.length) {
+        showToast.success(json.newlyUnlocked, {
+          duration: 4000,
+          progress: false,
+          position: 'bottom-center',
+          transition: 'bounceIn',
+          icon: '',
+          sound: false,
+        });
+      }
+    } catch {}
+  };
 
   return null;
 }

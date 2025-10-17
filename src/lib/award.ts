@@ -67,10 +67,10 @@ export async function evaluateAndAward(visitorId: number) {
           lastProgressAt: new Date(),
         },
       });
-      if (res.unlocked) newlyUnlocked.push(rule.slug);
+      if (res.unlocked) newlyUnlocked.push(rule.description);
     } else {
       const setUnlocked = !existing.unlockedAt && res.unlocked ? { unlockedAt: new Date() } : {};
-      if (!existing.unlockedAt && res.unlocked) newlyUnlocked.push(rule.slug);
+      if (!existing.unlockedAt && res.unlocked) newlyUnlocked.push(rule.description);
 
       await prisma.visitorAchievement.update({
         where: { id: existing.id },

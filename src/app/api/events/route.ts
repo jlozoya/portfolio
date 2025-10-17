@@ -31,15 +31,19 @@ export async function POST(req: NextRequest) {
     // Update roll-up stats
     const stats = await getOrInitStats(visitor.id);
     const updates: Partial<{
+      visits: number;
       pagesSeen: number;
       totalTimeSec: number;
       maxScrollDepth: number;
       contactSubmits: number;
       shares: number;
     }> = {};
+
+    console.log('postbody', body);
     for (const e of events) {
       switch (e.type) {
         case 'PAGE_VIEW':
+          updates.visits = (updates.visits ?? stats.visits) + 1;
           updates.pagesSeen = (updates.pagesSeen ?? stats.pagesSeen) + 1;
           break;
         case 'TIME_SPENT_SEC':
@@ -60,6 +64,7 @@ export async function POST(req: NextRequest) {
         // VISIT handled by /api/fingerprint or you can send VISIT here too
       }
     }
+    console.log('updates asd', updates);
     if (Object.keys(updates).length) {
       await prisma.visitorStats.update({
         where: { visitorId: visitor.id },
