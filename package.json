@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npm run build:webpack",
-    "build:webpack": "prisma generate && next build --webpack",
+    "build:webpack": "prisma generate && cross-env NEXT_USE_TURBOPACK=0 next build",
     "start": "next start",
     "prisma:studio": "prisma studio",
     "prisma:migrate": "prisma migrate dev",
@@ -30,6 +30,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "eslint-config-prettier": "^10.1.8",
