@@ -35,8 +35,8 @@ const sampleProjects = [
       'AWS',
       'GCloud',
     ],
+    view: 'https://www.functionize.com/',
     details: '/functionize',
-    url: 'https://www.functionize.com/',
   },
   {
     title: 'Architect',
@@ -45,8 +45,8 @@ const sampleProjects = [
       'Chrome extension that records user interactions (clicks, typing, drags, navigation, downloads, uploads, custom js injections, etc...) into a structured list for automation.',
     tags: ['Chrome Extension', 'JavaScript', 'Redux', 'Automation', 'Tailwind'],
     image: '/assets/img/projects/architect-simple-loop.png',
+    view: 'https://chromewebstore.google.com/detail/functionize-architect/iojgmnipokofkeihgnlhmmmchpfchonk?hl=en',
     details: '/architect',
-    url: 'https://chromewebstore.google.com/detail/functionize-architect/iojgmnipokofkeihgnlhmmmchpfchonk?hl=en',
   },
   {
     title: 'Rave',
@@ -55,8 +55,8 @@ const sampleProjects = [
       'This application is an evolving social network featuring integrated payment gateways, infinite scrolling, role-based user access, user analytics, and a dedicated blog page.',
     tags: ['Ionic', 'MySQL', 'RESTful API', 'Hibrid', 'Laravel', 'OAuth2', 'Online Payments'],
     image: '/assets/img/projects/rave-landing.png',
-    details: 'https://rave.lozoya.org/',
-    url: 'https://github.com/jlozoya/rave',
+    view: 'https://rave.lozoya.org/',
+    details: 'https://github.com/jlozoya/rave',
   },
   {
     title: 'Insurance Wallet',
@@ -81,8 +81,8 @@ const sampleProjects = [
       'This project is a CI/CD pipeline automation exercise for a React-based chat application and an Nginx reverse proxy. Both the client and server applications are automatically deployed and updated through the pipeline.',
     tags: ['React', 'Socket.io', 'Node.js', 'Docker', 'CI/CD'],
     image: '/assets/img/projects/chat.png',
-    url: 'https://github.com/jlozoya/chat',
-    details: 'https://chat.lozoya.org',
+    view: 'https://chat.lozoya.org',
+    details: 'https://github.com/jlozoya/chat',
   },
   {
     title: 'This Portfolio',
@@ -91,7 +91,8 @@ const sampleProjects = [
       'It is built with React, Next.js, and TypeScript, with a CI/CD pipeline for integration into AWS.',
     tags: ['React', 'Next.js', 'TypeScript', 'CI/CD', 'AWS'],
     image: '/assets/img/projects/portfolio.png',
-    url: 'https://github.com/jlozoya/portfolio',
+    view: 'https://github.com/jlozoya/portfolio',
+    details: 'https://github.com/jlozoya/portfolio/',
   },
   {
     title: 'Notes App',
@@ -100,8 +101,8 @@ const sampleProjects = [
       'A modern, collaborative note-taking app built with React Native (Expo). Create, edit, and organize your notes in real time, instantly synced across devices. Includes secure authentication, offline access, and cloud backups for reliability and privacy.',
     tags: ['React', 'Next.js', 'TypeScript', 'CI/CD', 'AWS'],
     image: '/assets/img/projects/notes-app.png',
-    url: 'https://github.com/jlozoya/notes-app',
-    details: 'https://notesapp.lozoya.org/',
+    view: 'https://notesapp.lozoya.org/',
+    details: 'https://github.com/jlozoya/notes-app',
   },
 ];
 

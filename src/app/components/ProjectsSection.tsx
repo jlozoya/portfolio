@@ -13,7 +13,7 @@ type Project = {
   description: string;
   tags?: string[];
   image?: string;
-  url?: string;
+  view?: string;
   details?: string;
 };
 
@@ -74,9 +74,9 @@ export default function ProjectsSection({ id, projects = [] }: ProjectsSectionPr
 
             {/* actions */}
             <div className="mt-auto flex items-center justify-between">
-              {project.url && (
+              {project.view && (
                 <a
-                  href={project.url}
+                  href={project.view}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-indigo-500"
