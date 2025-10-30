@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.18.0",
+    "cross-env": "^10.1.0",
     "next": "15.5.3",
     "nextjs-toast-notify": "^1.54.0",
     "nodemailer": "^7.0.6",
@@ -30,7 +31,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
-    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "eslint-config-prettier": "^10.1.8",
