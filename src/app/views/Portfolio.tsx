@@ -81,7 +81,7 @@ const sampleProjects = [
       'This project is a CI/CD pipeline automation exercise for a React-based chat application and an Nginx reverse proxy. Both the client and server applications are automatically deployed and updated through the pipeline.',
     tags: ['React', 'Socket.io', 'Node.js', 'Docker', 'CI/CD'],
     image: '/assets/img/projects/chat.png',
-    view: 'https://chat.lozoya.org',
+    // view: 'https://chat.lozoya.org',
     details: 'https://github.com/jlozoya/chat',
   },
   {
@@ -91,7 +91,6 @@ const sampleProjects = [
       'It is built with React, Next.js, and TypeScript, with a CI/CD pipeline for integration into AWS.',
     tags: ['React', 'Next.js', 'TypeScript', 'CI/CD', 'AWS'],
     image: '/assets/img/projects/portfolio.png',
-    view: 'https://github.com/jlozoya/portfolio',
     details: 'https://github.com/jlozoya/portfolio/',
   },
   {
