@@ -49,7 +49,7 @@ jobs:
             git reset --hard origin/master
 
             echo ">>> Installing dependencies..."
-            npm ci --omit=dev
+            npm ci
 
             echo ">>> Running Prisma migrate..."
             export DATABASE_URL="${{ secrets.DATABASE_URL }}"
@@ -58,6 +58,9 @@ jobs:
 
             echo ">>> Rebuilding Next.js app..."
             npm run build
+
+            echo ">>> Pruning dev dependencies..."
+            npm prune --omit=dev
 
             echo ">>> Restarting PM2 process..."
             pm2 reload portfolio || pm2 restart portfolio
