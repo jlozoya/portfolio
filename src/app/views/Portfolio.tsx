@@ -93,6 +93,16 @@ const sampleProjects = [
     image: '/assets/img/projects/portfolio.png',
     url: 'https://github.com/jlozoya/portfolio',
   },
+  {
+    title: 'Notes App',
+    company: 'Personal Project',
+    description:
+      'A modern, collaborative note-taking app built with React Native (Expo). Create, edit, and organize your notes in real time, instantly synced across devices. Includes secure authentication, offline access, and cloud backups for reliability and privacy.',
+    tags: ['React', 'Next.js', 'TypeScript', 'CI/CD', 'AWS'],
+    image: '/assets/img/projects/notes-app.png',
+    url: 'https://github.com/jlozoya/notes-app',
+    details: 'https://notesapp.lozoya.org/',
+  },
 ];
 
 const logos = [
