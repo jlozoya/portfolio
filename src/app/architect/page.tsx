@@ -31,6 +31,16 @@ export default function Architect() {
       src: '/assets/videos/projects/architect-simple-loop.webm',
       description: 'Recording a simple example, performing a Google search and adding a loop.',
     },
+    {
+      title: 'Code Injection',
+      src: '/assets/videos/projects/architect-code-injection.webm',
+      description: 'Providing a simple walkthrough where I perform a few actions inside an iframe.',
+    },
+    {
+      title: 'Iframe Interaction',
+      src: '/assets/videos/projects/architect-iframe-interaction.webm',
+      description: 'Showing a simple example of injecting and executing code.',
+    },
   ];
 
   return (
