@@ -38,7 +38,7 @@ export default function Architect() {
     },
     {
       title: 'Iframe Interaction',
-      src: '/assets/videos/projects/architect-iframe-interaction.webm',
+      src: '/assets/videos/projects/architect-iframe-actions.webm',
       description: 'Showing a simple example of injecting and executing code.',
     },
   ];
