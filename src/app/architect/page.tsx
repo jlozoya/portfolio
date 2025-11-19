@@ -41,6 +41,12 @@ export default function Architect() {
       src: '/assets/videos/projects/architect-iframe-actions.webm',
       description: 'Showing a simple example of injecting and executing code.',
     },
+    {
+      title: 'Advanced Verification',
+      src: '/assets/videos/projects/architect-advanced-verification.webm',
+      description:
+        'Architect can capture and verify all the properties of a selected element, or you can mark it for visual AI evaluation at a later stage.',
+    },
   ];
 
   return (
