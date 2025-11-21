@@ -126,7 +126,7 @@ const Portfolio = () => {
       {/* Top Nav */}
       <nav className="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <span className="font-bold text-indigo-400"></span>
+          <span className="font-bold text-indigo-400">JF</span>
           <ul className="flex gap-6 text-sm font-medium text-gray-300">
             <li>
               <a href="#profile" className="select-none hover:text-indigo-400">
@@ -151,7 +151,9 @@ const Portfolio = () => {
           </ul>
         </div>
       </nav>
+
       <FingerprintClient sendToServer />
+
       <div className="mx-auto max-w-6xl px-6 py-12" id="profile">
         {/* Header */}
         <header className="mb-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -161,8 +163,9 @@ const Portfolio = () => {
             </h1>
             <p className="mt-1 font-medium text-indigo-300/90">Full Stack Developer</p>
             <p className="mt-3 max-w-xl text-sm text-gray-300">
-              Computer Systems Engineer experienced in building scalable web solutions (React &
-              Node.js). Passionate about automation, performant UIs, and user-friendly tools.
+              Computer Systems Engineer experienced in building scalable web solutions (Angular,
+              React &amp; Node.js). Passionate about automation, performant UIs, and user-friendly
+              tools.
             </p>
           </div>
 
@@ -190,7 +193,26 @@ const Portfolio = () => {
 
         <div className="grid grid-cols-1 gap-8 pt-12 lg:grid-cols-12" id="experience">
           {/* Sidebar */}
-          <aside className="rounded-2xl border border-gray-800 bg-gray-900/40 p-6 shadow-lg lg:col-span-4 xl:col-span-3">
+          <aside
+            className="rounded-2xl border border-gray-800 bg-gray-900/40 p-6 shadow-lg lg:col-span-4 xl:col-span-3"
+            id="contact"
+          >
+            <h2 className="mb-3 text-sm font-semibold tracking-wider text-gray-200 uppercase">
+              Contact
+            </h2>
+            <ul className="mb-6 space-y-1 text-sm">
+              <ContactItem>+52-6181746512</ContactItem>
+              <ContactItem>
+                <a
+                  href="mailto:fernandolv1995@gmail.com"
+                  className="transition hover:text-indigo-400"
+                >
+                  fernandolv1995@gmail.com
+                </a>
+              </ContactItem>
+              <ContactItem>Victoria 343 norte, Durango, México</ContactItem>
+            </ul>
+
             <h2 className="mb-3 text-sm font-semibold tracking-wider text-gray-200 uppercase">
               Languages
             </h2>
@@ -202,21 +224,29 @@ const Portfolio = () => {
             <h2 className="mb-3 text-sm font-semibold tracking-wider text-gray-200 uppercase">
               Skills
             </h2>
-            <div className="space-y-2 text-sm text-gray-300">
-              <div className="flex flex-col gap-2">
+            <div className="space-y-3 text-sm text-gray-300">
+              <div className="flex flex-col gap-1">
                 <span className="font-medium text-gray-100">Frontend</span>
                 <span>
-                  React, React Native, JavaScript, TypeScript, HTML5, CSS3, Tailwind, Bootstrap
+                  Angular, React, React Native, Vue, JavaScript, TypeScript, HTML5, CSS3, Tailwind,
+                  Bootstrap
                 </span>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 <span className="font-medium text-gray-100">Backend</span>
-                <span>Node.js, Python (Flask, Django), MySQL, RESTful APIs, microservices</span>
+                <span>Node.js, Python (Django, Flask), SQL, PostgreSQL, RESTful APIs, GraphQL</span>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="font-medium text-gray-100">Tools & Processes</span>
+              <div className="flex flex-col gap-1">
+                <span className="font-medium text-gray-100">Cloud &amp; Tools</span>
                 <span>
-                  Git, Docker, Webpack, Jira, CI/CD, Redux, Context API, Figma, Agile (Scrum/Kanban)
+                  AWS, GCP, Git, Docker, Webpack, Jira, CI/CD pipelines, Redux, Context API, Figma,
+                  Git Flow, Jest, RTL
+                </span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-medium text-gray-100">Other</span>
+                <span>
+                  Agile (Scrum, Kanban), cross-functional collaboration, prompt engineering
                 </span>
               </div>
             </div>
@@ -229,10 +259,10 @@ const Portfolio = () => {
               <h3 className="mb-3 text-xl font-semibold">Profile</h3>
               <p className="text-sm leading-relaxed text-gray-300">
                 Computer Systems Engineer with 7+ years of experience delivering scalable web
-                solutions for Silicon Valley companies. Specialized in fullstack JavaScript (React,
-                Node.js) with a proven record of improving product performance, usability and
-                reliability. Experienced leading distributed teams and driving innovation in test
-                automation and user interaction technologies.
+                solutions for Silicon Valley companies. Specialized in fullstack JavaScript
+                (Angular, Node.js), with a proven record of improving product performance,
+                usability, and reliability. Experienced in leading distributed teams and driving
+                innovation in test automation and user interaction technologies.
               </p>
             </section>
 
@@ -251,15 +281,46 @@ const Portfolio = () => {
                 </header>
                 <ul className="mt-3 ml-5 list-disc space-y-1 text-sm text-gray-300">
                   <li>
-                    Built and maintained core features of an AI-driven testing platform using React.
-                  </li>
-                  <li>Improved frontend performance and responsive behavior across devices.</li>
-                  <li>
-                    Maintained backend services primarily in Node.js and built test automation
-                    tooling.
+                    Migrated legacy code from PHP/Smarty to a modern stack using Angular with
+                    TypeScript on the frontend and Node.js on the backend.
                   </li>
                   <li>
-                    Built Architect a Chrome extension to record user interactions for automation.
+                    Developed and maintained core features of an AI-driven testing platform using
+                    Angular with TypeScript, enhancing state management through Redux to improve
+                    performance, scalability, and responsive design.
+                  </li>
+                  <li>
+                    Collaborated with globally distributed teams to enhance UI/UX, improve frontend
+                    responsiveness, and align with product goals.
+                  </li>
+                  <li>
+                    Maintained and optimized backend architecture using Node.js and Flask,
+                    refactoring legacy APIs, improving data handling efficiency, and implementing
+                    caching and monitoring solutions to enhance overall system performance.
+                  </li>
+                  <li>
+                    Implemented seamless data delivery from AWS S3 and PostgreSQL databases for core
+                    platform features.
+                  </li>
+                  <li>
+                    Built Architect, a powerful Chrome extension that automatically records user
+                    interactions across websites for test automation.
+                  </li>
+                  <li>
+                    Dockerized and implemented Git Flow across multiple repositories to automate the
+                    delivery of key system components, significantly improving deployment speed and
+                    reliability.
+                  </li>
+                  <li>
+                    Built and maintained RESTful APIs using Node.js, enabling full lifecycle
+                    external management (create, read, update, delete) of AWS Lambda functions.
+                  </li>
+                  <li>
+                    Developed and integrated automated solutions for file management operations on
+                    AWS S3, and for managing Google Cloud Functions operations.
+                  </li>
+                  <li>
+                    Administered and maintained development infrastructure on AWS EC2 and IAM.
                   </li>
                 </ul>
               </article>
@@ -268,10 +329,32 @@ const Portfolio = () => {
                 <h4 className="font-bold">Ventus Technology</h4>
                 <div className="text-sm text-gray-300">Tech Lead · DEC 2018 - SEP 2019</div>
                 <ul className="mt-3 ml-5 list-disc space-y-1 text-sm text-gray-300">
+                  <li>Led a small team delivering a React Native application.</li>
                   <li>
-                    Led a team of 4 developers building cross-platform apps with React Native.
+                    Owned solution design and served as the primary contact for technical
+                    decision-making across stakeholders.
                   </li>
-                  <li>Responsible for technical decisions and solution design.</li>
+                </ul>
+              </article>
+
+              <article className="mb-5 rounded-lg border border-gray-700 bg-gray-800/30 p-4">
+                <h4 className="font-bold">Freelancer</h4>
+                <div className="text-sm text-gray-300">
+                  Full Stack Developer · JUN 2018 - DEC 2018
+                </div>
+                <ul className="mt-3 ml-5 list-disc space-y-1 text-sm text-gray-300">
+                  <li>
+                    Built tailored web portfolios and landing pages using frameworks like React and
+                    Django.
+                  </li>
+                  <li>
+                    Implemented secure payment gateways and customized solutions to meet each
+                    client’s unique requirements.
+                  </li>
+                  <li>
+                    Architected and maintained cloud-based infrastructures on AWS EC2 and Lightsail
+                    to support multiple projects.
+                  </li>
                 </ul>
               </article>
 
@@ -280,8 +363,8 @@ const Portfolio = () => {
                 <div className="text-sm text-gray-300">Resident Engineer · JUN 2017 - DEC 2017</div>
                 <ul className="mt-3 ml-5 list-disc space-y-1 text-sm text-gray-300">
                   <li>
-                    Developed a cross-platform app for field sampling of environmental pollutants
-                    (React Native).
+                    Developed a cross-platform, semi-multitenant application for conducting field
+                    sampling of environmental pollutants using React Native, TypeScript, and Django.
                   </li>
                 </ul>
               </article>
@@ -292,7 +375,8 @@ const Portfolio = () => {
               <h3 className="mb-3 text-xl font-semibold">Education</h3>
               <div className="rounded-lg border border-gray-700 bg-gray-800/30 p-4 text-sm text-gray-300">
                 <div>2013 - 2017 · Computer Systems Engineering (mobile specialization)</div>
-                <div>ITD | Durango Institute of Technology — B.E. (GPA: 9.5 / 10.0)</div>
+                <div>ITD | Durango Institute of Technology — Bachelor of Engineering (B.E.)</div>
+                <div>GPA: 9.5 / 10.0</div>
               </div>
             </section>
           </main>
