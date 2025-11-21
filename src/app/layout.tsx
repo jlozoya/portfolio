@@ -46,8 +46,7 @@ export default function RootLayout({
         <meta name="application-name" content="Lozoya" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="Lozoya" />
-
-        <meta name="facebook-domain-verification" content="y52vwxy7g60phx2am7w755dillql0y" />
+        <meta name="facebook-domain-verification" content="6u243x060k7j3aatlynkhe0uzcis13" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@JuanLozoyaV" />
