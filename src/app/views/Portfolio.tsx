@@ -198,22 +198,6 @@ const Portfolio = () => {
             id="contact"
           >
             <h2 className="mb-3 text-sm font-semibold tracking-wider text-gray-200 uppercase">
-              Contact
-            </h2>
-            <ul className="mb-6 space-y-1 text-sm">
-              <ContactItem>+52-6181746512</ContactItem>
-              <ContactItem>
-                <a
-                  href="mailto:fernandolv1995@gmail.com"
-                  className="transition hover:text-indigo-400"
-                >
-                  fernandolv1995@gmail.com
-                </a>
-              </ContactItem>
-              <ContactItem>Victoria 343 norte, Durango, México</ContactItem>
-            </ul>
-
-            <h2 className="mb-3 text-sm font-semibold tracking-wider text-gray-200 uppercase">
               Languages
             </h2>
             <ul className="mb-6 space-y-1">
