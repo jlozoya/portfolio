@@ -17,7 +17,7 @@ const project: Project = {
   title: 'Architect — Interaction Recorder',
   company: 'Functionize',
   description:
-    'Chrome extension that records user interactions (clicks, typing, drags, navigation, downloads, uploads, custom js injections, etc...) into a structured list for automation.',
+    'Architect is a production-grade Chrome extension designed to capture, interpret, and transform real user interactions into a structured, replayable automation script. It works across any web page regardless of DOM structure using a deep event-tracking system that supports complex workflows and captures clicks, typing, scrolls, drags, navigation, uploads, downloads, and more. Each interaction is normalized into high-level actions that can be replayed, edited, or consumed by an automation engine or AI system, making it easy to convert real user behavior into reliable end-to-end tests and reusable automation flows.',
   tags: ['Chrome Extension', 'JavaScript', 'Redux', 'Automation', 'Tailwind'],
   image: '/assets/img/projects/architect-simple-loop.png',
   details: '/architect',
@@ -45,13 +45,88 @@ export default function Architect() {
       title: 'Advanced Verification',
       src: '/assets/videos/projects/architect-advanced-verification.webm',
       description:
-        'Architect can capture and verify all the properties of a selected element, or you can mark it for visual AI evaluation at a later stage.',
+        'Architect can capture and verify all the properties of a selected element, or mark it for visual AI validation.',
+    },
+  ];
+
+  const eventGroups = [
+    {
+      title: 'Mouse & Pointer',
+      items: [
+        'Click',
+        'PointerDown',
+        'PointerUp',
+        'MouseDown',
+        'MouseUp',
+        'MouseOver',
+        'MouseOut',
+        'MouseEnter',
+        'MouseMove',
+        'PointerMove',
+      ],
+    },
+    {
+      title: 'Keyboard & Input',
+      items: ['KeyDown', 'KeyUp', 'Input', 'Focus'],
+    },
+    {
+      title: 'Touch & Gestures',
+      items: ['TouchMove'],
+    },
+    {
+      title: 'Drag & Drop',
+      items: ['DragStart', 'DragOver', 'DragEnter', 'DragLeave', 'DragDrop', 'DragEnd'],
+    },
+    {
+      title: 'Scroll & Navigation',
+      items: ['Scroll', 'ContextMenu'],
+    },
+    {
+      title: 'Browser / System',
+      items: ['FullscreenChange', 'BeforePrint', 'AfterPrint', 'WindowResize', 'Message'],
+    },
+    {
+      title: 'Window-level',
+      items: ['Click (window)', 'MouseUp (window)', 'PointerUp (window)'],
+    },
+  ];
+
+  const actionGroups = [
+    {
+      title: 'Flow Control & Navigation',
+      items: ['Navigate', 'Scroll', 'Wait', 'Loops', 'Conditionals'],
+    },
+    {
+      title: 'Page Modeling & Data',
+      items: [
+        'PageObjects',
+        'PageVariables',
+        'Variables',
+        'TestVariable',
+        'HTMLStorage',
+        'CookiesStorage',
+        'DB',
+        'API Calls',
+      ],
+    },
+    {
+      title: 'Communication & Identity',
+      items: ['Email', 'SMS', 'Signature'],
+    },
+    {
+      title: 'Visual & Verification',
+      items: ['FullPageCV', 'VisPageChk', 'MouseMove', 'Keypress'],
+    },
+    {
+      title: 'Files & Advanced',
+      items: ['CustomCode', 'FileViewer', 'Uploads', 'Downloads', 'AddNote', 'GenerateData'],
     },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black font-sans text-gray-100">
       <div className="mx-auto max-w-6xl px-6 py-12">
+        {/* Back Button */}
         <div className="mb-4 flex justify-end">
           <Link
             href="/"
@@ -60,11 +135,10 @@ export default function Architect() {
             Back
           </Link>
         </div>
-        <article
-          key={project.id || project.title}
-          className="group mb-8 transform-gpu rounded-2xl bg-gray-800/40 p-5 shadow-sm transition-shadow duration-200"
-        >
-          {/* Image / placeholder */}
+
+        {/* Project Card */}
+        <article className="group mb-8 transform-gpu rounded-2xl bg-gray-800/40 p-5 shadow-sm transition-shadow duration-200">
+          {/* Image */}
           <div className="mb-4 flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-700">
             {project.image ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -74,16 +148,64 @@ export default function Architect() {
             )}
           </div>
 
-          {/* Title & description */}
-          <h4 className="mb-2 text-lg font-semibold text-gray-100">{project.title}</h4>
+          {/* Title */}
+          <h4 className="mb-1 text-xl font-semibold text-gray-100">{project.title}</h4>
 
           {project.company && (
-            <p className="mb-3 text-sm leading-relaxed text-gray-300">{project.company}</p>
+            <p className="mb-3 text-xs tracking-wide text-gray-400 uppercase">{project.company}</p>
           )}
 
-          <p className="mb-3 text-sm leading-relaxed text-gray-300">{project.description}</p>
+          {/* Description */}
+          <p className="mb-6 text-sm leading-relaxed text-gray-300">{project.description}</p>
 
-          {/* tags */}
+          {/* Structured Sections */}
+          <section className="mb-6 grid gap-6 md:grid-cols-2">
+            {/* Event coverage */}
+            <div>
+              <h5 className="mb-2 text-sm font-semibold text-gray-100">Event Coverage</h5>
+              <div className="space-y-2 text-xs text-gray-300">
+                {eventGroups.map((group) => (
+                  <div key={group.title}>
+                    <p className="font-medium text-gray-200">{group.title}</p>
+                    <div className="mt-1 flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-gray-600/70 bg-gray-800/60 px-2 py-0.5 text-[11px]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Automation actions */}
+            <div>
+              <h5 className="mb-2 text-sm font-semibold text-gray-100">Automation Actions</h5>
+              <div className="space-y-2 text-xs text-gray-300">
+                {actionGroups.map((group) => (
+                  <div key={group.title}>
+                    <p className="font-medium text-gray-200">{group.title}</p>
+                    <div className="mt-1 flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-indigo-600/60 bg-indigo-900/20 px-2 py-0.5 text-[11px]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Tags */}
           {project.tags && project.tags.length > 0 && (
             <div className="mb-3 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
@@ -97,7 +219,7 @@ export default function Architect() {
             </div>
           )}
 
-          {/* actions */}
+          {/* Actions */}
           <div className="mt-auto flex items-center justify-between">
             {project.url && (
               <a
@@ -112,6 +234,7 @@ export default function Architect() {
           </div>
         </article>
 
+        {/* Videos */}
         <VideoGallery videos={videos} />
       </div>
     </div>
